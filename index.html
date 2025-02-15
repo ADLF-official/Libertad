@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libertad Financiera para Dueños de Salones - ADLF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rojo: #FF2E2E;
+            --negro: #0A0A0A;
+            --degradado-rojo: linear-gradient(135deg, #FF2E2E 0%, #8B0000 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--negro);
+            color: #FFFFFF;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            background: var(--degradado-rojo);
+            padding: 8rem 2rem 15rem;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            animation: titleEntrance 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes titleEntrance {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+            animation: subtitleEntrance 1s 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        .floating-money {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-100px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        .pain-points {
+            padding: 4rem 2rem;
+            background: var(--negro);
+            position: relative;
+        }
+
+        .pain-card {
+            background: rgba(20, 20, 20, 0.95);
+            border: 2px solid var(--rojo);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .pain-card:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
+            box-shadow: 0 20px 40px rgba(255,46,46,0.2);
+        }
+
+        .cta-pulse {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--degradado-rojo);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .cta-pulse.expanded {
+            width: 200px;
+            height: auto;
+            padding: 1rem;
+            border-radius: 15px;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .cta-pulse.expanded button {
+            width: 100%;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 8px;
+            color: #FFF;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-pulse.expanded button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.8; }
+        }
+
+        .form-container {
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 15px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,46,46,0.3);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: formEntrance 1s 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes formEntrance {
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .input-container label {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        button {
+            background: var(--degradado-rojo);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255,46,46,0.4);
+        }
+
+        .parallax-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="parallax-layer" data-depth="0.10"></div>
+        
+        <h1 class="hero-title">¿Cansado de ser esclavo<br>de <span style="text-decoration: line-through;">tu salón</span>?</h1>
+        <p class="hero-subtitle">Descubre cómo 127 dueños de salones recuperaron 4 horas diarias y aumentaron sus ganancias un 300% en menos de 90 días</p>
+
+        <!-- Elementos flotantes -->
+        <div class="floating-money" style="left: 10%; top: 20%">💵</div>
+        <div class="floating-money" style="left: 30%; top: 60%">⏱️</div>
+        <div class="floating-money" style="right: 15%; top: 40%">📈</div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-points">
+        <div class="pain-card">
+            <h2>¿Reconoces alguna de estas situaciones?</h2>
+            <ul style="margin: 1.5rem 0; list-style: none;">
+                <li style="padding: 1rem; border-bottom: 1px solid rgba(255,46,46,0.1);">❌ Trabajas 12 horas diarias pero no ves los resultados</li>
+                <li style="padding: 1rem; border-bottom: 1px solid rgba(255,46,46,0.1);">❌ Tu equipo no sigue tus procesos</li>
+                <li style="padding: 1rem;">❌ Clientas que solo vienen por descuentos</li>
+            </ul>
+            <p style="margin-top: 1.5rem; color: var(--rojo); font-weight: 700;">¿Cuánto te está costando esta realidad?</p>
+        </div>
+
+        <div class="pain-card" style="background: rgba(255,46,46,0.1);">
+            <h2>Imagina esto:</h2>
+            <p style="margin: 1.5rem 0;">Un salón que funciona <span style="color: var(--rojo);">sin tu presencia constante</span><br>
+            Clientas que pagan precio completo <span style="color: var(--rojo);">sin pedir descuentos</span><br>
+            Un equipo que <span style="color: var(--rojo);">sigue tus procesos al pie de la letra</span></p>
+            <p style="font-size: 1.2rem;">¿Cómo cambiaría tu vida?</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="form-container">
+            <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; margin-bottom: 2rem;">
+                <span style="color: var(--rojo);">Descarga Gratis:</span><br>
+                "El Manual Prohibido para Dueños de Salones"
+            </h2>
+            <form id="contactForm">
+                <div class="input-container">
+                    <input type="text" id="nombre" placeholder=" " required>
+                    <label for="nombre">Nombre *</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="whatsapp" placeholder=" " required>
+                    <label for="whatsapp">Contacto de WhatsApp *</label>
+                </div>
+                <button type="submit">DESCARGAR MI GUÍA GRATIS</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="cta-pulse" id="ctaPulse">¡Quiero mi libertad!</div>
+
+    <script>
+        // Configuración del Bot de Telegram
+        const BOT_TOKEN = '7609445234:AAHaIOs_atVGpS9dfD5VPpv5ohxW0dduMhQ';
+        const CHAT_ID = '929759981';
+
+        // Animación de entrada mejorada
+        document.addEventListener('DOMContentLoaded', () => {
+            const painCards = document.querySelectorAll('.pain-card');
+            painCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = `translateY(${30 * (index + 1)}px)`;
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s cubic-bezier(0.22, 0.61, 0.36, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 500 + (index * 200));
+            });
+        });
+
+        // Efecto parallax mejorado
+        document.addEventListener('mousemove', (e) => {
+            const layers = document.querySelectorAll('.parallax-layer');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            layers.forEach(layer => {
+                const depth = parseFloat(layer.getAttribute('data-depth'));
+                const x = (mouseX - 0.5) * depth * 100;
+                const y = (mouseY - 0.5) * depth * 50;
+                layer.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // CTA Pulse Expandido
+        const ctaPulse = document.getElementById('ctaPulse');
+        ctaPulse.addEventListener('click', () => {
+            if (!ctaPulse.classList.contains('expanded')) {
+                ctaPulse.classList.add('expanded');
+                ctaPulse.innerHTML = `
+                    <button onclick="window.open('https://wa.me/5356143460?text=%C2%A1Hola%21%20me%20gustar%C3%ADa%20obtener%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20obtener%20mi%20libertad%20financiera', '_blank')">Contactar por WhatsApp 1</button>
+                    <button onclick="window.open('https://wa.me/5355579670?text=%C2%A1Hola%21%20me%20gustar%C3%ADa%20obtener%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20obtener%20mi%20libertad%20financiera', '_blank')">Contactar por WhatsApp 2</button>
+                `;
+            }
+        });
+
+        // Envío del formulario a Telegram
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+
+            if (!nombre || !whatsapp) {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            try {
+                const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+                const messageText = `🛎 *Nuevo Lead* 🛎\n\n`
+                    + `*Nombre:* ${nombre}\n`
+                    + `*WhatsApp:* ${whatsapp}\n`
+                    + `*Fecha:* ${new Date().toLocaleString()}`;
+
+                const response = await fetch(telegramUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: messageText,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                if (!response.ok) throw new Error('Error en el envío');
+
+                // Redirección al PDF
+                window.location.href = 'https://drive.google.com/uc?export=download&id=1joNWPYIW7PpGMbi_wvPMItCsIyoR8yhH';
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
+            }
+        });
+    </script>
+</body>
+</html>
